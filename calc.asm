@@ -46,7 +46,7 @@ _start:
 
 	jmp _errorMSG
 
-printResult:
+_printResult:
 	mov eax,4
 	mov ebx,1
 	mov ecx,resultMsg
@@ -113,4 +113,3 @@ _exit:
 	mov eax,1
 	xor ebx,ebx
 	int 0x80
-
