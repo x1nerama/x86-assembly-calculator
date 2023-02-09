@@ -19,6 +19,27 @@ Its use is simple as you can see above. You just select an operator and enter 2 
 Operators that need to be entered must be **'+'**, **'-'**, **'*'**.
 <br/>
 
+<h2> Creating Object File and Running Assembly Project </h2>
+
+You can follow the steps below to compile the project:
+
+To get an Object file:
+
+```bash
+nasm -f elf64 calc.asm
+```
+
+To create an executable
+
+```
+ld -o calc calc.o
+```
+
+And now just run:
+```
+./calc
+```
+
 <h2> Project algorithm </h2>
 
 I wanted to add the algorithm I created in the project here, in case anyone would like to examine the codes. Here is the algorithm:
