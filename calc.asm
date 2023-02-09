@@ -11,7 +11,7 @@ section .data
 	op: db "Choose a Operation: ", 20
         str3: equ $ - op
 
-        totalMsg: db "Total: ", 8
+        resultMsg: db "Result: ", 8
 
 	error: db "Sry! Wrong Operator", 25
 	errorLen: equ $ - error
@@ -46,10 +46,10 @@ _start:
 
 	jmp _errorMSG
 
-_printTotal:
+printResult:
 	mov eax,4
 	mov ebx,1
-	mov ecx,totalMsg
+	mov ecx,resultMsg
 	mov edx,7
 	int 0x80
 
@@ -69,7 +69,7 @@ _addOP:
 	add eax,ebx
 	add eax,'0'
 	mov [total],eax
-	call _printTotal
+	call _printResult
 
 	jmp _exit
 
@@ -79,7 +79,7 @@ _subOP:
 	sub eax,ebx
 	add eax,'0'
 	mov [total],eax
-	call _printTotal
+	call _printResult
 
 	jmp _exit
 
@@ -89,7 +89,7 @@ _mulOP:
 	mul ebx
 	add eax,'0'
 	mov [total],eax
-	call _printTotal
+	call _printResult
 	jmp _exit
 
 _divOP:
@@ -98,7 +98,7 @@ _divOP:
 	div ebx
 	add eax,'0'
 	mov [total],eax
-	call _printTotal
+	call _printResult
 
 	jmp _exit
 
