@@ -40,6 +40,8 @@ And now just run:
 ./calc
 ```
 
+**You should also have the macros.inc file in the same location.**
+
 <h2> Project algorithm </h2>
 
 I wanted to add the algorithm I created in the project here, in case anyone would like to examine the codes. Here is the algorithm:
