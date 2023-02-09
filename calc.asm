@@ -13,13 +13,16 @@ section .data
 
         totalMsg: db "Total: ", 8
 
+	error: db "Sry! Wrong Operator", 25
+	errorLen: equ $ - error
+
 	buf: db 10, 0
 
 section .bss
         varOp: resb 6
 	nm1: resb 32
 	nm2: resb 32
-	total: resb 10
+	total: resb 20
 section .text
         global _start
 
@@ -38,23 +41,28 @@ _start:
 	je _subOP
 	cmp ah,0x0
 	je _mulOP
+	cmp ah,0x5
+	je _divOP
 
-	jmp _exit
+	jmp _errorMSG
 
 _printTotal:
 	mov eax,4
 	mov ebx,1
 	mov ecx,totalMsg
-	mov edx,10
+	mov edx,7
 	int 0x80
 
 	mov eax,4
 	mov ebx,1
 	mov ecx,total
-	mov edx,10
+	mov edx,1
 	int 0x80
 
+
+_return_block:
 	ret
+
 _addOP:
 	sub eax,'0'
 	sub eax,'0'
@@ -82,10 +90,27 @@ _mulOP:
 	add eax,'0'
 	mov [total],eax
 	call _printTotal
+	jmp _exit
+
+_divOP:
+	sub eax,'0'
+	sub ebx,'0'
+	div ebx
+	add eax,'0'
+	mov [total],eax
+	call _printTotal
 
 	jmp _exit
+
+_errorMSG:
+	mov eax,4
+	mov ebx,1
+	mov ecx,error
+	mov edx,errorLen
+	int 0x80
 
 _exit:
 	mov eax,1
 	xor ebx,ebx
 	int 0x80
+
