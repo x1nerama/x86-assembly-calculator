@@ -2,7 +2,7 @@
 ;    *                                                                               *
 ;    *                       Calculator with X86 Linux Assembly                      *   
 ;    *                                                                               *
-;    *                              coder: devtbenoth                                *
+;    *                              author: x1nerama                                 *
 ;    *                                                                               *
 ;    *********************************************************************************
 
